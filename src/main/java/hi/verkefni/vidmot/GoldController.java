@@ -33,7 +33,7 @@ public class GoldController implements Initializable {
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
-
+    //ghaæ
     public void orvatakkar(){
         map.put(KeyCode.UP, Stefna.UPP);
         map.put(KeyCode.DOWN, Stefna.NIDUR);
