@@ -54,6 +54,9 @@ public class Leikbord extends Pane {
         }
     }
 
+    /**
+     * Skjölun nema ekki.
+     */
     private void postLoadInitialization() {
         // This method is called immediately after the FXML is loaded
         // Suitable for any initialization that requires the FXML components to be loaded first
