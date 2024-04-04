@@ -1,6 +1,7 @@
 package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Klukka;
+import hi.verkefni.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -12,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -27,13 +29,14 @@ public class GoldController implements Initializable {
     private Klukka klukka;
     private Timeline timer;
     private Timeline gull;
+    private EndaskjarController endaskjarController;
     @FXML
     public MenuController menuStyringController;
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
-    //ghaæ
+
     public void orvatakkar(){
         map.put(KeyCode.UP, Stefna.UPP);
         map.put(KeyCode.DOWN, Stefna.NIDUR);
@@ -43,6 +46,10 @@ public class GoldController implements Initializable {
         map.put(KeyCode.S, Stefna.NIDUR);
         map.put(KeyCode.A, Stefna.VINSTRI);
         map.put(KeyCode.D, Stefna.HAEGRI);
+        map.put(KeyCode.Q, Stefna.NW);
+        map.put(KeyCode.Z, Stefna.SW);
+        map.put(KeyCode.C, Stefna.SA);
+        map.put(KeyCode.E, Stefna.NA);
         fxLeikbord.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             KeyCode key = event.getCode();
             if(map.containsKey(key)){
@@ -53,9 +60,11 @@ public class GoldController implements Initializable {
             }
                 });
     }
-    public void leikLokid(){
+    public void leikLokid() throws IOException {
         fxLeikbord.setiGangi(false);
         gull.stop();
+            ViewSwitcher.switchTo(View.ENDASKJAR);
+            endaskjarController.setStig(Integer.parseInt(fxStig.getText()));
     }
     public void stillaKlukku() {
         if (timer != null) {
@@ -74,7 +83,11 @@ public class GoldController implements Initializable {
         klukka.timiProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal.intValue() == 0) {
                 timer.stop();
-                leikLokid();
+                try {
+                    leikLokid();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
             }
         });
@@ -114,5 +127,9 @@ public class GoldController implements Initializable {
 
         fxLeikbord.setFocusTraversable(true);
         Platform.runLater(() -> fxLeikbord.requestFocus());
+    }
+
+    public Leikur getLeikur() {
+        return fxLeikbord.getLeikur();
     }
 }

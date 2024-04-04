@@ -59,7 +59,6 @@ public class MenuController implements Initializable {
             if (newValue != null){
                 RadioMenuItem selectedMenuItem = (RadioMenuItem) newValue;
                 int difficulty = Integer.parseInt(selectedMenuItem.getId());
-                //System.out.println(difficulty);
                 goldController.setDifficulty(difficulty);
                 goldController.onNyrLeikur();
 

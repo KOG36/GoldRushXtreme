@@ -21,30 +21,28 @@ import java.io.IOException;
 public class Grafari extends Rectangle {
     private int stefna;
     private final double speed = 15.0;
-    // Initial positions
+
     private final double originalX = 0;
     private final double originalY = 0;
 
     public void afram() {
-        // Convert degrees to radians for Java's Math functions
+
         double radians = Math.toRadians(stefna);
 
-        // Calculate movement in x and y based on direction and speed
+
         double deltaX = speed * Math.cos(radians);
         double deltaY = speed * Math.sin(radians);
 
 
-        // Assuming these are the bounds within which Grafari must stay
+
         double minX = 0;
         double minY = 0;
         double maxX = this.getParent().getLayoutBounds().getWidth();
         double maxY = this.getParent().getLayoutBounds().getHeight();
 
-        // Calculate new position
         double newTranslateX = Math.max(minX, Math.min(this.getTranslateX() + deltaX, maxX - this.getWidth()));
-        double newTranslateY = Math.max(minY, Math.min(this.getTranslateY() - deltaY, maxY - this.getHeight())); // Subtract deltaY because JavaFX's Y-axis is inverted
+        double newTranslateY = Math.max(minY, Math.min(this.getTranslateY() - deltaY, maxY - this.getHeight()));
 
-        // Update Grafari's position to new position if within bounds
         this.setTranslateX(newTranslateX);
         this.setTranslateY(newTranslateY);
 
@@ -58,7 +56,7 @@ public class Grafari extends Rectangle {
     }
 
     public void resetPosition() {
-        // Reset to the original position
+
         this.setTranslateX(originalX);
         this.setTranslateY(originalY);
     }
