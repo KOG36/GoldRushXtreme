@@ -53,6 +53,8 @@ public class MenuController implements Initializable {
         info.showAndWait();
     }
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         toggleGroup1.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {

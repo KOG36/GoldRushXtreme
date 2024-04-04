@@ -33,6 +33,7 @@ public class GoldController implements Initializable {
     @FXML
     public MenuController menuStyringController;
 
+
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
@@ -113,11 +114,10 @@ public class GoldController implements Initializable {
     }
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuStyringController.setGoldController(this);
+
 
         fxStig.textProperty().bind(fxLeikbord.getLeikur().stigProperty().asString());
         orvatakkar();
