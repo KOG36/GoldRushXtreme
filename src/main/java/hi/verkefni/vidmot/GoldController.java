@@ -1,5 +1,6 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Klukka;
 import hi.verkefni.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
@@ -32,6 +33,7 @@ public class GoldController implements Initializable {
     private EndaskjarController endaskjarController;
     @FXML
     public MenuController menuStyringController;
+    //public static HighScore lokaStig;
 
 
     public void setDifficulty(int difficulty) {
@@ -64,8 +66,9 @@ public class GoldController implements Initializable {
     public void leikLokid() throws IOException {
         fxLeikbord.setiGangi(false);
         gull.stop();
-            ViewSwitcher.switchTo(View.ENDASKJAR);
-            endaskjarController.setStig(Integer.parseInt(fxStig.getText()));
+        HighScore.setHigsScore(fxLeikbord.getLeikur().getStig());
+        ViewSwitcher.switchTo(View.ENDASKJAR);
+
     }
     public void stillaKlukku() {
         if (timer != null) {
@@ -101,6 +104,7 @@ public class GoldController implements Initializable {
         fxLeikbord.reset();
         stillaKlukku();
         hefjaLeik();
+        HighScore.setHigsScore(0);
     }
     public void hefjaLeik(){
         if (gull != null){
@@ -112,8 +116,9 @@ public class GoldController implements Initializable {
         gull.setCycleCount(Timeline.INDEFINITE);
         gull.play();
     }
-
-
+    public void setEndaskjarController(EndaskjarController endaskjarController) {
+        this.endaskjarController = endaskjarController;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuStyringController.setGoldController(this);
