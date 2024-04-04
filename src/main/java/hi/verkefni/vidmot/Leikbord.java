@@ -23,7 +23,7 @@ import java.util.Random;
  *****************************************************************************/
 public class Leikbord extends Pane {
 
-    private Leikur leikur = new Leikur();
+    public Leikur leikur = new Leikur();
     @FXML
     private Grafari fxGrafari;
     private ObservableList<Gull> gullListi = FXCollections.observableArrayList();
