@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.ForsidaController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="400.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="95.0" text="Tónlist">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin></Label>
+                  <ComboBox fx:id="tonlist" prefHeight="39.0" prefWidth="150.0" promptText="Veldu lag">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin></ComboBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="320.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="&lt;&lt;" />
+                  <TextField alignment="CENTER" prefHeight="25.0" prefWidth="39.0" text="0" />
+                  <Button mnemonicParsing="false" text="&gt;&gt;" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="284.0" prefWidth="400.0">
+               <children>
+                  <ImageView fitHeight="101.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children></VBox>
+      <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="400.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="70.0" prefWidth="130.0" text="High Score:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Label prefHeight="70.0" prefWidth="130.0" text="Létt">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <ListView prefHeight="246.0" prefWidth="368.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="Létt" />
+                  <RadioButton mnemonicParsing="false" text="Miðlungs" />
+                  <RadioButton mnemonicParsing="false" text="Erfitt" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#fxOnByrjaTakki" prefHeight="86.0" prefWidth="375.0" text="Hefja leik">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <AnchorPane prefHeight="239.0" prefWidth="400.0">
+               <children>
+                  <ImageView fitHeight="116.0" fitWidth="130.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="86.0" fitWidth="105.0" layoutX="244.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children></VBox>
+   </children>
+</HBox>

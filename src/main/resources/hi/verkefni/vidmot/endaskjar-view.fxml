@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.EndaskjarController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="400.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="62.0" prefWidth="249.0" text="Leik lokið!!!!">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="133.0" prefWidth="400.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="45.0" prefWidth="180.0" text="Nafn" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" text="Vista stig" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="238.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#fxOnSpilaAfturTakki" prefHeight="75.0" prefWidth="275.0" text="Spila Aftur">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#fxOnForsidaTakki" prefHeight="75.0" prefWidth="275.0" text="Aftur á forsíðu">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children></VBox>
+      <VBox prefHeight="800.0" prefWidth="400.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="140.0" text="Þú fékkst:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fxLokaStig" prefHeight="55.0" prefWidth="140.0" text="00 Stig">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="70.0" prefWidth="130.0" text="High Score:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Label prefHeight="70.0" prefWidth="130.0" text="Létt">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <ListView prefHeight="271.0" prefWidth="360.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="121.0" prefWidth="400.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#fxOnHaettaTakki" prefHeight="75.0" prefWidth="275.0" text="Hætta">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+         </children></VBox>
+   </children>
+</HBox>
