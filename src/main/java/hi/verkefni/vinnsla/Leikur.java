@@ -13,6 +13,28 @@ import javafx.beans.property.SimpleIntegerProperty;
  *****************************************************************************/
 public class Leikur {
     private IntegerProperty stig = new SimpleIntegerProperty(this, "stig", 0);
+    private static final String[] grafarar = {
+            "/hi/verkefni/vidmot/CSS/images/Grafari1.png",
+            "/hi/verkefni/vidmot/CSS/images/Grafari2.png",
+            "/hi/verkefni/vidmot/CSS/images/Grafari3.png"
+    };
+    private static IntegerProperty grafaraVal = new SimpleIntegerProperty(1);
+
+    public static int getGrafaraVal() {
+        return grafaraVal.get();
+    }
+
+    public static IntegerProperty grafaraValProperty() {
+        return grafaraVal;
+    }
+
+    public static void setGrafaraVal(int grafaraVal) {
+        Leikur.grafaraVal.set(grafaraVal);
+    }
+
+    public static String getGrafaraURL(int val){
+        return grafarar[val];
+    }
 
     /**
      * Get-er fyrir Stig.
@@ -36,5 +58,13 @@ public class Leikur {
      */
     public void setStig(int stig) {
         this.stig.set(stig);
+    }
+
+    public static void valUpp(){
+        setGrafaraVal(getGrafaraVal() + 1);
+    }
+
+    public static void valNidur(){
+        setGrafaraVal(getGrafaraVal() - 1);
     }
 }
