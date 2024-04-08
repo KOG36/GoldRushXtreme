@@ -39,6 +39,7 @@ public class ForsidaController {
 
     public void initialize(){
         fxCurrentGrafari.textProperty().bind(Leikur.grafaraValProperty().asString());
+        Leikur.setDifficulty(1);
         toggleGroup1.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null){
                 RadioButton selectedMenuItem = (RadioButton) newValue;

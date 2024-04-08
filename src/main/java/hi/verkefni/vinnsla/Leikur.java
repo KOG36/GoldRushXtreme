@@ -70,10 +70,20 @@ public class Leikur {
     }
 
     public static void valUpp(){
-        setGrafaraVal(getGrafaraVal() + 1);
+        if (getGrafaraVal() < grafarar.length) { // Ensure index stays within the array bounds
+            setGrafaraVal(getGrafaraVal() + 1);
+        }
+        else {
+            setGrafaraVal(1);
+        }
     }
 
     public static void valNidur(){
-        setGrafaraVal(getGrafaraVal() - 1);
+        if (getGrafaraVal() > 1) { // Ensure index stays within the array bounds
+            setGrafaraVal(getGrafaraVal() - 1);
+        }
+        else {
+            setGrafaraVal(grafarar.length);
+        }
     }
 }
