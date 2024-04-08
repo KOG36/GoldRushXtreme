@@ -13,6 +13,8 @@ import javafx.scene.paint.ImagePattern;
 import java.io.IOException;
 import java.util.Random;
 
+import static hi.verkefni.vinnsla.Leikur.getGrafaraURL;
+
 /******************************************************************************
  * Nafn : Kjartan Ólafur Gunnarsson
  * T-póstur: kog36@hi.is
@@ -76,7 +78,8 @@ public class Leikbord extends Pane {
         // This method is called immediately after the FXML is loaded
         // Suitable for any initialization that requires the FXML components to be loaded first
         if (fxGrafari != null) {
-            Image image = new Image(getClass().getResourceAsStream("/hi/verkefni/vidmot/CSS/images/Grafari.png"));
+            int index = Leikur.grafaraValProperty().get() - 1;
+            Image image = new Image(getClass().getResourceAsStream(getGrafaraURL(index)));
             fxGrafari.setFill(new ImagePattern(image));
         }
 
