@@ -19,6 +19,15 @@ public class Leikur {
             "/hi/verkefni/vidmot/CSS/images/Grafari3.png"
     };
     private static IntegerProperty grafaraVal = new SimpleIntegerProperty(1);
+    private static int difficulty;
+
+    public static int getDifficulty() {
+        return difficulty;
+    }
+
+    public static void setDifficulty(int difficulty) {
+        Leikur.difficulty = difficulty;
+    }
 
     public static int getGrafaraVal() {
         return grafaraVal.get();
