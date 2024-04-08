@@ -17,7 +17,7 @@ import java.util.Random;
  * Nafn : Kjartan Ólafur Gunnarsson
  * T-póstur: kog36@hi.is
  *
- * Lýsing : XXXXXXXXXXXXXXX
+ * Lýsing : Klasi sem skilgreinir Leikborð.
  *
  *
  *****************************************************************************/
@@ -29,19 +29,9 @@ public class Leikbord extends Pane {
     private ObservableList<Gull> gullListi = FXCollections.observableArrayList();
     private boolean iGangi = true;
 
-    public boolean isiGangi() {
-        return iGangi;
-    }
-
-    public void setiGangi(boolean iGangi) {
-        this.iGangi = iGangi;
-        this.setDisable(!iGangi);
-    }
-
-    public Grafari getFxGrafari() {
-        return fxGrafari;
-    }
-
+    /**
+     * Smiður fyrir Leikbord.
+     */
     public Leikbord() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("leikbord-view.fxml"));
         fxmlLoader.setRoot(this);
@@ -55,7 +45,32 @@ public class Leikbord extends Pane {
     }
 
     /**
-     * Skjölun nema ekki.
+     * Get-er fyrir iGangi.
+     * @return boolean - Skilar hvort iGangi sé true eða false.
+     */
+    public boolean isiGangi() {
+        return iGangi;
+    }
+
+    /**
+     * Set-er fyrir iGangi.
+     * @param iGangi
+     */
+    public void setiGangi(boolean iGangi) {
+        this.iGangi = iGangi;
+        this.setDisable(!iGangi);
+    }
+
+    /**
+     * Get-er fyrir fxGrafari.
+     * @return Grafari - Skilar grafara.
+     */
+    public Grafari getFxGrafari() {
+        return fxGrafari;
+    }
+
+    /**
+     * Initialize fall fyrir Leikbord.
      */
     private void postLoadInitialization() {
         // This method is called immediately after the FXML is loaded
@@ -69,6 +84,9 @@ public class Leikbord extends Pane {
         fxGrafari.setTranslateY(this.getPrefHeight() / 2 - fxGrafari.getHeight() / 2);
     }
 
+    /**
+     * Fall sem sér um að núllstilla leikborð þegar nýr leikur er byrjaður.
+     */
     public void reset(){
         if (this.isDisabled()){
             this.setDisable(false);
@@ -87,6 +105,9 @@ public class Leikbord extends Pane {
         });
     }
 
+    /**
+     * Fall sem byrtir gull á leikborði.
+     */
     public void meiraGull() {
         Gull gull = new Gull();
         Image image = new Image(getClass().getResourceAsStream("/hi/verkefni/vidmot/CSS/images/Penge.png"));
@@ -104,6 +125,9 @@ public class Leikbord extends Pane {
         gullListi.add(gull);
     }
 
+    /**
+     * Fall sem sér um að taka í burtu gull og bæta við stigum þegar grafari snertir gull.
+     */
     public void arekstur() {
         Gull grafid = null;
         for(Gull gull : gullListi){
@@ -120,12 +144,19 @@ public class Leikbord extends Pane {
         }
     }
 
+    /**
+     * Get-er fyrir leikur.
+     * @return Leikur - Skilar leik.
+     */
     public Leikur getLeikur() {
         return leikur;
     }
 
+    /**
+     * Set-er fyrir Leikur.
+     * @param leikur
+     */
     public void setLeikur(Leikur leikur) {
         this.leikur = leikur;
     }
-
 }

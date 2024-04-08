@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-
+/**
+ *
+ */
 public class EndaskjarController {
 
     @FXML
@@ -19,7 +21,7 @@ public class EndaskjarController {
 
     public void initialize(){
 
-        fxLokaStig.setText(HighScore.getHigsScore() + "");
+        fxLokaStig.setText(HighScore.getHighScore() + "");
 
     }
 

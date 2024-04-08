@@ -1,10 +1,10 @@
 package hi.verkefni.vidmot;
 
 /******************************************************************************
- * Nafn : Kjartan Ólafur Gunnarsson
- * T-póstur: kog36@hi.is
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
  *
- * Lýsing : XXXXXXXXXXXXXXX
+ * Lýsing : Enum klasi fyrir stefnu.
  *
  *
  *****************************************************************************/
@@ -19,10 +19,19 @@ public enum Stefna {
     NA(45);
 
     private final int gradur;
+
+    /**
+     * Smiður fyrir Stefna.
+     * @param s
+     */
     Stefna(int s){
         gradur = s;
     }
 
+    /**
+     * Get-er fyrir gradur.
+     * @return
+     */
     public int getGradur() {
         return gradur;
     }

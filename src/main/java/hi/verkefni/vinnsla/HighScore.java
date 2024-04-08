@@ -1,12 +1,28 @@
 package hi.verkefni.vinnsla;
 
 public class HighScore {
-    public static int higsScore;
+    /**
+     * Nafn: Róbert A. Jack
+     * Tölvupóstur: ral9@hi.is
+     *
+     * Lýsing: Klasi sem skilgreinir HighScore.
+     *
+     */
+    public static int highScore;
 
-    public static void setHigsScore(int hScore){
-         higsScore=hScore;
+    /**
+     * Set-er fyrir highScore.
+     * @param hScore
+     */
+    public static void setHighScore(int hScore){
+         highScore =hScore;
     }
-    public static int getHigsScore(){
-        return higsScore;
+
+    /**
+     * Get-er fyrir highScore.
+     * @return int - highScore sem int.
+     */
+    public static int getHighScore(){
+        return highScore;
     }
 }

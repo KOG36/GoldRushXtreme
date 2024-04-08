@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
  * Nafn : Kjartan Ólafur Gunnarsson
  * T-póstur: kog36@hi.is
  *
- * Lýsing : XXXXXXXXXXXXXXX
+ * Lýsing : Controller fyrir menu.
  *
  *
  *****************************************************************************/
@@ -23,15 +23,24 @@ public class MenuController implements Initializable {
     public GoldController goldController;
     public ToggleGroup toggleGroup1;
 
+    /**
+     * Tengir saman GoldController við MenuController.
+     * @param goldController
+     */
     public void setGoldController(GoldController goldController) {
         this.goldController = goldController;
     }
 
-
+    /**
+     * Event handler fyrir Nýr leikur takkann. Byrja nýjan leik þegar ýtt er á takkann.
+     */
     public void onNyrLeikur(){
         goldController.onNyrLeikur();
     }
 
+    /**
+     * Event handler fyrir Hætta takkann. Lokar forritinu ef leikmaður staðfestir val í dialog.
+     */
     public void onHaetta(){
         Alert haetta = new Alert(Alert.AlertType.CONFIRMATION);
         haetta.setTitle("Hætta leik");
@@ -45,6 +54,9 @@ public class MenuController implements Initializable {
 
     }
 
+    /**
+     * Event handler fyrir Um forritið takkann. Byrtir dialog sem gefur upplýsingar um forritið.
+     */
     public void onInfo(){
         Alert info = new Alert(Alert.AlertType.INFORMATION);
         info.setTitle("Upplýsingar");
@@ -54,7 +66,11 @@ public class MenuController implements Initializable {
     }
 
 
-
+    /**
+     * Initialize fall fyrir MenuController.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         toggleGroup1.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
