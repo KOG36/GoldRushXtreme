@@ -16,7 +16,8 @@ public enum Stefna {
     NW(135),
     SW(225),
     SA(315),
-    NA(45);
+    NA(45),
+    ENGIN(0);
 
     private final int gradur;
 
