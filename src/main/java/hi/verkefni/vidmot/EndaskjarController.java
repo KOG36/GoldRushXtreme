@@ -1,5 +1,6 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.HighScore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,12 +14,12 @@ public class EndaskjarController {
     public GoldController goldController;
     @FXML
     private Label fxLokaStig;
-    private int stig;
+
 
 
     public void initialize(){
 
-        fxLokaStig.textProperty().bind(goldController.getLeikur().stigProperty().asString());
+        fxLokaStig.setText(HighScore.getHigsScore() + "");
 
     }
 
@@ -34,8 +35,5 @@ public class EndaskjarController {
         System.exit(0);
     }
 
-    public void setStig(int stig) {
-        this.stig=stig;
 
-    }
 }

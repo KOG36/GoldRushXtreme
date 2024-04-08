@@ -1,5 +1,6 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Klukka;
 import hi.verkefni.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
@@ -10,13 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class GoldController implements Initializable {
     public Leikbord fxLeikbord;
@@ -38,7 +40,7 @@ public class GoldController implements Initializable {
         this.difficulty = difficulty;
     }
 
-    public void orvatakkar(){
+    public void orvatakkar() {
         map.put(KeyCode.UP, Stefna.UPP);
         map.put(KeyCode.DOWN, Stefna.NIDUR);
         map.put(KeyCode.LEFT, Stefna.VINSTRI);
@@ -47,25 +49,58 @@ public class GoldController implements Initializable {
         map.put(KeyCode.S, Stefna.NIDUR);
         map.put(KeyCode.A, Stefna.VINSTRI);
         map.put(KeyCode.D, Stefna.HAEGRI);
-        map.put(KeyCode.Q, Stefna.NW);
-        map.put(KeyCode.Z, Stefna.SW);
-        map.put(KeyCode.C, Stefna.SA);
-        map.put(KeyCode.E, Stefna.NA);
-        fxLeikbord.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+
+
+        HashSet<KeyCode> yttitTakkar = new HashSet<>();
+
+        fxLeikbord.setOnKeyPressed(event -> {
             KeyCode key = event.getCode();
-            if(map.containsKey(key)){
-                int newStefna = map.get(key).getGradur();
-                fxLeikbord.getFxGrafari().setStefna(newStefna);
-                fxLeikbord.getFxGrafari().afram();
+            if (map.containsKey(key)) {
+                yttitTakkar.add(key);
+                breytaUmAtt(yttitTakkar);
                 event.consume();
             }
-                });
+        });
+
+        fxLeikbord.setOnKeyReleased(event -> {
+            KeyCode key = event.getCode();
+            if (map.containsKey(key)) {
+                yttitTakkar.remove(key);
+                breytaUmAtt(yttitTakkar);
+                event.consume();
+            }
+        });
+    }
+
+    private void breytaUmAtt(Set<KeyCode> yttirTakkar) {
+        int newStefna = 0;
+        if (yttirTakkar.contains(KeyCode.UP) && yttirTakkar.contains(KeyCode.RIGHT)) {
+            newStefna = Stefna.NA.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.DOWN) && yttirTakkar.contains(KeyCode.RIGHT)) {
+            newStefna = Stefna.SA.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.DOWN) && yttirTakkar.contains(KeyCode.LEFT)) {
+            newStefna = Stefna.SW.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.UP) && yttirTakkar.contains(KeyCode.LEFT)) {
+            newStefna = Stefna.NW.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.UP)) {
+            newStefna = Stefna.UPP.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.DOWN)) {
+            newStefna = Stefna.NIDUR.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.LEFT)) {
+            newStefna = Stefna.VINSTRI.getGradur();
+        } else if (yttirTakkar.contains(KeyCode.RIGHT)) {
+            newStefna = Stefna.HAEGRI.getGradur();
+        }
+
+        fxLeikbord.getFxGrafari().setStefna(newStefna);
+        fxLeikbord.getFxGrafari().afram();
     }
     public void leikLokid() throws IOException {
         fxLeikbord.setiGangi(false);
         gull.stop();
-            ViewSwitcher.switchTo(View.ENDASKJAR);
-            endaskjarController.setStig(Integer.parseInt(fxStig.getText()));
+        HighScore.setHigsScore(fxLeikbord.getLeikur().getStig());
+        ViewSwitcher.switchTo(View.ENDASKJAR);
+
     }
     public void stillaKlukku() {
         if (timer != null) {
@@ -101,6 +136,7 @@ public class GoldController implements Initializable {
         fxLeikbord.reset();
         stillaKlukku();
         hefjaLeik();
+        HighScore.setHigsScore(0);
     }
     public void hefjaLeik(){
         if (gull != null){
@@ -112,8 +148,9 @@ public class GoldController implements Initializable {
         gull.setCycleCount(Timeline.INDEFINITE);
         gull.play();
     }
-
-
+    public void setEndaskjarController(EndaskjarController endaskjarController) {
+        this.endaskjarController = endaskjarController;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuStyringController.setGoldController(this);
@@ -129,7 +166,4 @@ public class GoldController implements Initializable {
         Platform.runLater(() -> fxLeikbord.requestFocus());
     }
 
-    public Leikur getLeikur() {
-        return fxLeikbord.getLeikur();
-    }
 }
