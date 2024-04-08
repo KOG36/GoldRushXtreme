@@ -44,6 +44,7 @@ public class ForsidaController {
                 RadioButton selectedMenuItem = (RadioButton) newValue;
                 int difficulty = Integer.parseInt(selectedMenuItem.getId());
                 fxEStig.setText(eStig[difficulty-1]);
+                Leikur.setDifficulty(difficulty);
 
             }
         });

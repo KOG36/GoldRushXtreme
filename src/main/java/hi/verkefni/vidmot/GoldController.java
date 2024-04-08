@@ -2,6 +2,7 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Klukka;
+import hi.verkefni.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -31,7 +32,7 @@ public class GoldController implements Initializable {
     public Leikbord fxLeikbord;
     public Label fxStig;
     public Label fxTimi;
-    private int difficulty = 1;
+    private int difficulty;
     public MenuBar menuStyring;
     private final HashMap<KeyCode, Stefna> map= new HashMap<>();
     private int[] lengd = {30, 20, 10};
@@ -165,6 +166,7 @@ public class GoldController implements Initializable {
         stillaKlukku();
         hefjaLeik();
         HighScore.setHighScore(0);
+
     }
 
     /**
@@ -198,11 +200,14 @@ public class GoldController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuStyringController.setGoldController(this);
 
+        setDifficulty(Leikur.getDifficulty());
+
 
         fxStig.textProperty().bind(fxLeikbord.getLeikur().stigProperty().asString());
         orvatakkar();
         stillaKlukku();
         hefjaLeik();
+
 
 
         fxLeikbord.setFocusTraversable(true);

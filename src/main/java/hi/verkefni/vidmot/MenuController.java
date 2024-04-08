@@ -1,5 +1,6 @@
 package hi.verkefni.vidmot;
 
+import hi.verkefni.vinnsla.Leikur;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -77,7 +78,8 @@ public class MenuController implements Initializable {
             if (newValue != null){
                 RadioMenuItem selectedMenuItem = (RadioMenuItem) newValue;
                 int difficulty = Integer.parseInt(selectedMenuItem.getId());
-                goldController.setDifficulty(difficulty);
+                Leikur.setDifficulty(difficulty);
+                goldController.setDifficulty(Leikur.getDifficulty());
                 goldController.onNyrLeikur();
 
             }

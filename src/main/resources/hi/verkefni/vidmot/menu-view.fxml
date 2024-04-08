@@ -20,7 +20,7 @@
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Breyta">
-            <RadioMenuItem fx:id="1" mnemonicParsing="false" selected="true" text="Létt">
+            <RadioMenuItem fx:id="1" mnemonicParsing="false"  text="Létt" selected="true">
                 <toggleGroup>
                     <ToggleGroup fx:id="toggleGroup1"/>
                 </toggleGroup>
