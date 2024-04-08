@@ -2,7 +2,6 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Klukka;
-import hi.verkefni.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -19,7 +18,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
-
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ *
+ * Lýsing : Conntroller fyrir Gold Rush. Forrititð er leikur þar sem gullgrafari safnar gulli á leikborði.
+ * Leikmaður fær stig fyrir hvert gull sem hann safnar.
+ *
+ *
+ *****************************************************************************/
 public class GoldController implements Initializable {
     public Leikbord fxLeikbord;
     public Label fxStig;
@@ -35,11 +42,17 @@ public class GoldController implements Initializable {
     @FXML
     public MenuController menuStyringController;
 
-
+    /**
+     * Set-er fyrir difficulty.
+     * @param difficulty
+     */
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Fall sem sér um að geyma hvaða örvatakka er verið að ýta á.
+     */
     public void orvatakkar() {
         map.put(KeyCode.UP, Stefna.UPP);
         map.put(KeyCode.DOWN, Stefna.NIDUR);
@@ -49,7 +62,6 @@ public class GoldController implements Initializable {
         map.put(KeyCode.S, Stefna.NIDUR);
         map.put(KeyCode.A, Stefna.VINSTRI);
         map.put(KeyCode.D, Stefna.HAEGRI);
-
 
         HashSet<KeyCode> yttitTakkar = new HashSet<>();
 
@@ -72,6 +84,10 @@ public class GoldController implements Initializable {
         });
     }
 
+    /**
+     * Fall sem sér um að geyma stefnu grafaranns og færa hann í þá átt.
+     * @param yttirTakkar
+     */
     private void breytaUmAtt(Set<KeyCode> yttirTakkar) {
         int newStefna = 0;
         if (yttirTakkar.contains(KeyCode.UP) && yttirTakkar.contains(KeyCode.RIGHT)) {
@@ -95,13 +111,22 @@ public class GoldController implements Initializable {
         fxLeikbord.getFxGrafari().setStefna(newStefna);
         fxLeikbord.getFxGrafari().afram();
     }
+
+    /**
+     * Fall sem stopar leikinn og skiptir yfir í endaskjáinn.
+     * @throws IOException
+     */
     public void leikLokid() throws IOException {
         fxLeikbord.setiGangi(false);
         gull.stop();
-        HighScore.setHigsScore(fxLeikbord.getLeikur().getStig());
+        HighScore.setHighScore(fxLeikbord.getLeikur().getStig());
         ViewSwitcher.switchTo(View.ENDASKJAR);
 
     }
+
+    /**
+     * Fall sem sér um að halda utan um niðurtalningu og endurræsingu klukkunnar.
+     */
     public void stillaKlukku() {
         if (timer != null) {
             timer.stop();
@@ -132,12 +157,19 @@ public class GoldController implements Initializable {
         timer.play();
     }
 
+    /**
+     * Fall sem sér um að hefja nýjanleik.
+     */
     public void onNyrLeikur(){
         fxLeikbord.reset();
         stillaKlukku();
         hefjaLeik();
-        HighScore.setHigsScore(0);
+        HighScore.setHighScore(0);
     }
+
+    /**
+     * Fall sem sér um að hefja nýjan leik.
+     */
     public void hefjaLeik(){
         if (gull != null){
             gull.stop();
@@ -148,9 +180,20 @@ public class GoldController implements Initializable {
         gull.setCycleCount(Timeline.INDEFINITE);
         gull.play();
     }
+
+    /**
+     * Fall sem tengjir saman EndaskjarController við GoldController.
+     * @param endaskjarController
+     */
     public void setEndaskjarController(EndaskjarController endaskjarController) {
         this.endaskjarController = endaskjarController;
     }
+
+    /**
+     * Initialize fall fyrir GoldController.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuStyringController.setGoldController(this);

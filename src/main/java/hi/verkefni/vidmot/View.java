@@ -16,7 +16,7 @@ public enum View {
     private String nafnFXMLSkra;
 
     /**
-     * Smiður fyrir Sida.
+     * Smiður fyrir View.
      * @param nafnFXMLSkra
      */
     View(String nafnFXMLSkra){
