@@ -2,15 +2,17 @@ package hi.verkefni.vinnsla;
 
 public class NafnOgStig {
     public String nafn;
-    public String stig;
-    public NafnOgStig(String nafn, String stig){
+    public int stig;
+    public int eStig;
+    public NafnOgStig(String nafn, int stig, int eStig){
         this.nafn = nafn;
         this.stig = stig;
+        this.eStig = eStig;
     }
     public String getNafn(){
         return nafn;
     }
-    public String getStig(){
+    public int getStig(){
         return stig;
     }
     @Override
