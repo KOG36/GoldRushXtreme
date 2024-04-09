@@ -31,6 +31,7 @@ public class EndaskjarController {
     public String vistadNafn;
     public String vistadStig;
     private StigaListi stigaListi;
+    private int stig;
 
 
 
@@ -56,6 +57,7 @@ public class EndaskjarController {
     public void fxOnVistaStig(ActionEvent event) {
         vistadNafn = nafnLeikmanns.getText();
         vistadStig = fxLokaStig.getText();
+        stig = Integer.parseInt(fxLokaStig.getText());
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt", true))) {
             writer.write(vistadNafn + "," + vistadStig);
             writer.newLine();
