@@ -38,14 +38,9 @@ public class ViewSwitcher {
             return;
         }
         try {
-            Parent root;
-            if(cache.containsKey(view)){
-                root = cache.get(view);
-            }else{
-                root = FXMLLoader.load(ViewSwitcher.class.getResource(view.getNafnFXMLSkra()));
-                cache.put(view, root);
-            }
+            Parent root = FXMLLoader.load(ViewSwitcher.class.getResource(view.getNafnFXMLSkra()));
             scene.setRoot(root);
+
         }catch (IOException e){
             e.printStackTrace();
         }
