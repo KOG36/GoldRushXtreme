@@ -2,10 +2,12 @@ package hi.verkefni.vinnsla;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
 
 public class StigaListi {
     public ObservableList<NafnOgStig> stigaListi;
@@ -21,8 +23,8 @@ public class StigaListi {
                 String[] partar = lina.split(",");
                 if (partar.length == 2) {
                     String nafn = partar[0].trim();
-                    String stig = partar[1].trim();
-                    NafnOgStig stak = new NafnOgStig(nafn, stig);
+                    int stig = Integer.parseInt(partar[1].trim());
+                    NafnOgStig stak = new NafnOgStig(nafn, stig, Leikur.getDifficulty());
                     stigaListi.add(stak);
                 } else {
                     System.err.println("Invalid data format: " + lina);
@@ -32,8 +34,21 @@ public class StigaListi {
             e.printStackTrace();
         }
     }
+
+    public void endurnyjaLista() {
+        // Clear the current list
+        stigaListi.clear();
+
+        // Repopulate the list from the file
+        fillaLista("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt");
+    }
+
     public ObservableList<NafnOgStig> getOllNofnOgStig() {
-        return stigaListi;
+        endurnyjaLista();
+        SortedList<NafnOgStig> sortedStigaListi = new SortedList<>(stigaListi,
+                Comparator.comparingInt(NafnOgStig::getStig).reversed());
+
+        return FXCollections.observableArrayList(sortedStigaListi);
     }
 }
 

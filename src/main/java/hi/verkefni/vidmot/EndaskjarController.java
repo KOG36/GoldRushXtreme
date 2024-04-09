@@ -66,6 +66,7 @@ public class EndaskjarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        fxHighScoreListi.setItems(stigaListi.getOllNofnOgStig());
         fxVistaTakki.setDisable(true);
 
     }
