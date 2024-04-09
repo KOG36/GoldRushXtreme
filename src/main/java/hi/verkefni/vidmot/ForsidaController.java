@@ -26,7 +26,7 @@ import static hi.verkefni.vinnsla.Leikur.getGrafaraURL;
 public class ForsidaController {
 
 
-    private static final String[] lagaListi= {"Lag 1", "lag 2", "Lag 3",  "lag 4"};
+    private static final String[] lagaListi= {"Backup Plan", "Catastrophic Success", "Cyborg Ninja",  "Floating Cat", "Game BOI 1", "Game BOI 2"};
     public Label fxEStig;
     public Button fxVinstri;
     public Label fxCurrentGrafari;
@@ -58,6 +58,15 @@ public class ForsidaController {
         frumstillaLog();
         updateImage();
         Leikur.grafaraValProperty().addListener((obs, oldVal, newVal) -> updateImage());
+
+        tonlist.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                int selectedIndex = tonlist.getSelectionModel().getSelectedIndex();
+                Leikur.setValidLag(selectedIndex);
+                // Here, you can use the selectedIndex for further actions, e.g., playing the song
+            }
+        }
+        );
 
     }
     public void frumstillaLog(){

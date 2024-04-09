@@ -124,7 +124,9 @@ public class GoldController implements Initializable {
         fxLeikbord.setiGangi(false);
         gull.stop();
         HighScore.setHighScore(fxLeikbord.getLeikur().getStig());
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         ViewSwitcher.switchTo(View.ENDASKJAR);
     }
 
@@ -187,22 +189,37 @@ public class GoldController implements Initializable {
     }
 
     public void hefjaTonlist(){
-        URL resource = getClass().getResource(Leikur.getValidLag());
-        if (resource != null) {
-            String lag = resource.toExternalForm();
-            Media sound = new Media(lag);
-            mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } else {
-            System.out.println("Resource not found");
+        String validLag = Leikur.getValidLag();
+        if (validLag == null || validLag.isEmpty() || validLag.equals("None")) {
+            // If a MediaPlayer is currently playing, stop and dispose it.
+            if (mediaPlayer != null) {
+                if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+                    mediaPlayer.stop();
+                }
+                mediaPlayer.dispose();
+                mediaPlayer = null;
+            }
+            return; // Exit the method since there's no song to play.
         }
-        /*
-        String lag = getClass().getResource(Leikur.getValidLag()).toExternalForm();
-        Media sound = new Media(new File(lag).toURI().toString());
-        mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setVolume(0.5);
-        mediaPlayer.setAutoPlay(true);
-        */
+
+        // Proceed to load and play the selected song.
+        URL resource = getClass().getResource(validLag);
+        if (resource != null) {
+            try {
+                if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
+                String lag = resource.toExternalForm();
+                Media sound = new Media(lag);
+                mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
+            } catch (Exception e) {
+                System.out.println("Error initializing media player: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Resource not found: " + validLag);
+        }
     }
 
     /**
