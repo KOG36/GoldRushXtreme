@@ -12,7 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -42,6 +45,7 @@ public class GoldController implements Initializable {
     private EndaskjarController endaskjarController;
     @FXML
     public MenuController menuStyringController;
+    private MediaPlayer mediaPlayer;
 
     /**
      * Set-er fyrir difficulty.
@@ -164,8 +168,8 @@ public class GoldController implements Initializable {
         fxLeikbord.reset();
         stillaKlukku();
         hefjaLeik();
+        hefjaTonlist();
         HighScore.setHighScore(0);
-
     }
 
     /**
@@ -180,6 +184,15 @@ public class GoldController implements Initializable {
         gull = new Timeline(k);
         gull.setCycleCount(Timeline.INDEFINITE);
         gull.play();
+    }
+
+    public void hefjaTonlist(){
+        String lag = Leikur.getValidLag();
+        Media sound = new Media(new File(lag).toURI().toString());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.5);
+
+        mediaPlayer.play();
     }
 
     /**

@@ -18,6 +18,17 @@ public class Leikur {
             "/hi/verkefni/vidmot/CSS/images/Grafari2.png",
             "/hi/verkefni/vidmot/CSS/images/Grafari3.png"
     };
+
+    private static final String[] tonlist = {
+            "hi/verkefni/vidmot/CSS/music/Backup Plan.mp3",
+            "hi/verkefni/vidmot/CSS/music/Catastrophic Success.mp3",
+            "hi/verkefni/vidmot/CSS/music/Cyborg Ninja.mp3",
+            "hi/verkefni/vidmot/CSS/music/Floating Cat.mp3",
+            "hi/verkefni/vidmot/CSS/music/Game BOI 1.mp3",
+            "hi/verkefni/vidmot/CSS/music/Game BOI 2.mp3"
+    };
+
+    private static String validLag = "hi/verkefni/vidmot/CSS/music/Backup Plan.mp3";
     private static IntegerProperty grafaraVal = new SimpleIntegerProperty(1);
     private static int difficulty;
 
@@ -31,6 +42,14 @@ public class Leikur {
 
     public static int getGrafaraVal() {
         return grafaraVal.get();
+    }
+
+    public static String getValidLag() {
+        return validLag;
+    }
+
+    public static void setValidLag(String validLag) {
+        Leikur.validLag = validLag;
     }
 
     public static IntegerProperty grafaraValProperty() {
