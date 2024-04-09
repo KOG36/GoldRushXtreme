@@ -28,7 +28,7 @@ public class Leikur {
             "/hi/verkefni/vidmot/CSS/music/GameBOI2.mp3"
     };
 
-    private static String validLag = "/hi/verkefni/vidmot/CSS/music/BackupPlan.mp3";
+    private static String validLag;
     private static IntegerProperty grafaraVal = new SimpleIntegerProperty(1);
     private static int difficulty;
 
@@ -48,8 +48,8 @@ public class Leikur {
         return validLag;
     }
 
-    public static void setValidLag(String validLag) {
-        Leikur.validLag = validLag;
+    public static void setValidLag(int val) {
+        Leikur.validLag = tonlist[val];
     }
 
     public static IntegerProperty grafaraValProperty() {
