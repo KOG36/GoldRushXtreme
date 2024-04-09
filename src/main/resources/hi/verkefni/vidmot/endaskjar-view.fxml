@@ -21,7 +21,7 @@
             <HBox alignment="CENTER" prefHeight="133.0" prefWidth="400.0" spacing="10.0">
                <children>
                   <TextField fx:id="nafnLeikmanns" onMouseClicked="#fxSmelltATexField" prefHeight="45.0" prefWidth="180.0" text="Nafn" />
-                  <Button mnemonicParsing="false" onAction="#fxOnVistaStig" prefHeight="45.0" prefWidth="100.0" text="Vista stig" />
+                  <Button fx:id="fxVistaTakki" mnemonicParsing="false" onAction="#fxOnVistaStig" prefHeight="45.0" prefWidth="100.0" text="Vista stig" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="238.0" prefWidth="400.0">

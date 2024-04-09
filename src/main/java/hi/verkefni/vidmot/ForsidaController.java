@@ -52,7 +52,6 @@ public class ForsidaController {
                 int difficulty = Integer.parseInt(selectedMenuItem.getId());
                 fxEStig.setText(eStig[difficulty-1]);
                 Leikur.setDifficulty(difficulty);
-
             }
         });
         frumstillaLog();

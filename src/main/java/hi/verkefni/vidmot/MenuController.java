@@ -1,6 +1,7 @@
 package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Leikur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -8,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -88,4 +90,5 @@ public class MenuController implements Initializable {
         });
 
     }
+
 }

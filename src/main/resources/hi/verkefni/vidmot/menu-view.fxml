@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.ToggleGroup?>
 
-<MenuBar VBox.vgrow="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.MenuController">
+<MenuBar VBox.vgrow="NEVER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.MenuController">
     <menus>
         <Menu mnemonicParsing="false" text="Skrá">
             <items>
-                <MenuItem mnemonicParsing="false" text="Nýr leikur" onAction="#onNyrLeikur"/>
-                <MenuItem mnemonicParsing="false" text="Hætta" onAction="#onHaetta"/>
+                <MenuItem mnemonicParsing="false" onAction="#onNyrLeikur" text="Nýr leikur" />
+                <MenuItem mnemonicParsing="false" onAction="#onHaetta" text="Hætta" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Breyta">
-            <RadioMenuItem fx:id="1" mnemonicParsing="false"  text="Létt" selected="true">
+            <RadioMenuItem fx:id="1" mnemonicParsing="false" selected="true" text="Létt">
                 <toggleGroup>
-                    <ToggleGroup fx:id="toggleGroup1"/>
+                    <ToggleGroup fx:id="toggleGroup1" />
                 </toggleGroup>
             </RadioMenuItem>
-            <RadioMenuItem fx:id="2" mnemonicParsing="false" text="Miðlungs" toggleGroup="$toggleGroup1"/>
-            <RadioMenuItem fx:id="3" mnemonicParsing="false" text="Erfitt" toggleGroup="$toggleGroup1"/>
+            <RadioMenuItem fx:id="2" mnemonicParsing="false" text="Miðlungs" toggleGroup="$toggleGroup1" />
+            <RadioMenuItem fx:id="3" mnemonicParsing="false" text="Erfitt" toggleGroup="$toggleGroup1" />
         </Menu>
         <Menu mnemonicParsing="false" text="Hjálp">
             <items>
-                <MenuItem mnemonicParsing="false" text="Um forritið" onAction="#onInfo"/>
+                <MenuItem mnemonicParsing="false" onAction="#onInfo" text="Um forritið" />
             </items>
         </Menu>
     </menus>
