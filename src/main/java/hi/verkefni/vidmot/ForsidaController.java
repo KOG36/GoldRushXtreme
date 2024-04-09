@@ -1,6 +1,7 @@
 package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Leikur;
+import hi.verkefni.vinnsla.StigaListi;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,12 +33,17 @@ public class ForsidaController {
     public Button fxHaegri;
     public ImageView fxGrafaraMynd;
     @FXML
+    private ListView fxHighScoreForsida;
+    @FXML
     private ComboBox<String> tonlist;
     @FXML
     private ToggleGroup toggleGroup1;
     private String[] eStig = {"Létt","Miðlungs", "Erfitt"};
+    public StigaListi forsiduStigaListi;
 
     public void initialize(){
+        forsiduStigaListi = new StigaListi();
+        fxHighScoreForsida.setItems(forsiduStigaListi.getOllNofnOgStig());
         fxCurrentGrafari.textProperty().bind(Leikur.grafaraValProperty().asString());
         Leikur.setDifficulty(1);
         toggleGroup1.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
