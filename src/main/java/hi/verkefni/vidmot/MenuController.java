@@ -62,7 +62,9 @@ public class MenuController implements Initializable {
         Alert info = new Alert(Alert.AlertType.INFORMATION);
         info.setTitle("Upplýsingar");
         info.setHeaderText(null);
-        info.setContentText("Höfundur forritsins og listamaður er Kjartan Ólafur Gunnarsson.\nForritið var forritað að mestu um miðja nótt þar sem höfundur var með alvarlega streptókokkasýkingu en vildi samt skila þessu af sér.\n Árið var 2024.");
+        info.setContentText("Höfundar forritsins eru Róbert A. Jack og Kjartan Ólafur Gunnarsson.\nNotaðu örvatakkanna" +
+                "til þess að færa kubbinn um leikborðið. náðu eins mörgum gullum og þú getur áður en tíminn klárast." +
+                " Stilltu erfiðleika stigið til að auka eða minnka tímann sem þú færð.\nForritað árið 2024.");
         info.showAndWait();
     }
 
