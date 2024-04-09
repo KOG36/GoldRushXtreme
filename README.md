@@ -11,7 +11,7 @@ forritið. Þegar tíminn sem leikmaður fær til þess að safna gulli klárast
 með því að skrá nafnið sitt, hefja nýjanleik eða farið aftur á forsíðu. Einnig er hægt að sjá highscore á lokaskjánum.
 
 ### Bygging og keyrsla forrits
-Nota skal open jdk version 21.0.2 og þýðanda 21.0.2. Opnist í intellij og keyrt með mavin plugin-um.
+Við notuðum jdk version 21.0.2 og javafx 21. Forritið er byggt um með maven og ætti því að vera hægt að keyra það í intellij með maven plugin-um.
 
 ### Höfundar
 Kjartan Ólafur Gunnarsson, kog36@hi.is
