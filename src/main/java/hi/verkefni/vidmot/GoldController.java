@@ -124,8 +124,8 @@ public class GoldController implements Initializable {
         fxLeikbord.setiGangi(false);
         gull.stop();
         HighScore.setHighScore(fxLeikbord.getLeikur().getStig());
+        mediaPlayer.stop();
         ViewSwitcher.switchTo(View.ENDASKJAR);
-
     }
 
     /**
@@ -187,12 +187,22 @@ public class GoldController implements Initializable {
     }
 
     public void hefjaTonlist(){
-        String lag = Leikur.getValidLag();
+        URL resource = getClass().getResource(Leikur.getValidLag());
+        if (resource != null) {
+            String lag = resource.toExternalForm();
+            Media sound = new Media(lag);
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } else {
+            System.out.println("Resource not found");
+        }
+        /*
+        String lag = getClass().getResource(Leikur.getValidLag()).toExternalForm();
         Media sound = new Media(new File(lag).toURI().toString());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setVolume(0.5);
-
-        mediaPlayer.play();
+        mediaPlayer.setAutoPlay(true);
+        */
     }
 
     /**
@@ -219,6 +229,7 @@ public class GoldController implements Initializable {
         orvatakkar();
         stillaKlukku();
         hefjaLeik();
+        hefjaTonlist();
 
 
 

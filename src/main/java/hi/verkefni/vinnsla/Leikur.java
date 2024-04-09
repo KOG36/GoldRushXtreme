@@ -20,15 +20,15 @@ public class Leikur {
     };
 
     private static final String[] tonlist = {
-            "hi/verkefni/vidmot/CSS/music/Backup Plan.mp3",
-            "hi/verkefni/vidmot/CSS/music/Catastrophic Success.mp3",
-            "hi/verkefni/vidmot/CSS/music/Cyborg Ninja.mp3",
-            "hi/verkefni/vidmot/CSS/music/Floating Cat.mp3",
-            "hi/verkefni/vidmot/CSS/music/Game BOI 1.mp3",
-            "hi/verkefni/vidmot/CSS/music/Game BOI 2.mp3"
+            "/hi/verkefni/vidmot/CSS/music/BackupPlan.mp3",
+            "/hi/verkefni/vidmot/CSS/music/CatastrophicSuccess.mp3",
+            "/hi/verkefni/vidmot/CSS/music/CyborgNinja.mp3",
+            "/hi/verkefni/vidmot/CSS/music/FloatingCat.mp3",
+            "/hi/verkefni/vidmot/CSS/music/GameBOI1.mp3",
+            "/hi/verkefni/vidmot/CSS/music/GameBOI2.mp3"
     };
 
-    private static String validLag = "hi/verkefni/vidmot/CSS/music/Backup Plan.mp3";
+    private static String validLag = "/hi/verkefni/vidmot/CSS/music/BackupPlan.mp3";
     private static IntegerProperty grafaraVal = new SimpleIntegerProperty(1);
     private static int difficulty;
 
