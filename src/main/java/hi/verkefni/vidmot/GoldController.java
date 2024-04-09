@@ -253,5 +253,4 @@ public class GoldController implements Initializable {
         fxLeikbord.setFocusTraversable(true);
         Platform.runLater(() -> fxLeikbord.requestFocus());
     }
-
 }

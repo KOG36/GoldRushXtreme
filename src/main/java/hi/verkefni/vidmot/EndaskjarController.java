@@ -4,6 +4,7 @@ import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.StigaListi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -22,6 +23,7 @@ import java.io.IOException;
  */
 public class EndaskjarController {
 
+    public Button fxVistaTakki;
     @FXML
     private ListView fxHighScoreListi;
     @FXML
@@ -64,6 +66,7 @@ public class EndaskjarController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        fxVistaTakki.setDisable(true);
 
     }
 
