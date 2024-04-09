@@ -57,7 +57,7 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
+
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>hi.verkefni.vidmot/hi.verkefni.vidmot.GoldApplication</mainClass>
@@ -74,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version> <!-- Use an appropriate version -->
+                <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
