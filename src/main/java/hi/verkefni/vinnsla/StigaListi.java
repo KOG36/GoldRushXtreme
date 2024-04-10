@@ -2,6 +2,7 @@ package hi.verkefni.vinnsla;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
 import java.io.BufferedReader;
@@ -19,12 +20,13 @@ public class StigaListi {
     public void fillaLista(String textaSkra) {
         try (BufferedReader br = new BufferedReader(new FileReader(textaSkra))) {
             String lina;
-            while ((lina = br.readLine()) != null) {
+            while ((lina = br.readLine()) != null && !lina.isEmpty()) {
                 String[] partar = lina.split(",");
-                if (partar.length == 2) {
+                if (partar.length == 3) {
                     String nafn = partar[0].trim();
                     int stig = Integer.parseInt(partar[1].trim());
-                    NafnOgStig stak = new NafnOgStig(nafn, stig, Leikur.getDifficulty());
+                    int difficulty = Integer.parseInt(partar[2].trim());
+                    NafnOgStig stak = new NafnOgStig(nafn, stig, difficulty);
                     stigaListi.add(stak);
                 } else {
                     System.err.println("Invalid data format: " + lina);
@@ -43,12 +45,16 @@ public class StigaListi {
         fillaLista("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt");
     }
 
-    public ObservableList<NafnOgStig> getOllNofnOgStig() {
-        endurnyjaLista();
-        SortedList<NafnOgStig> sortedStigaListi = new SortedList<>(stigaListi,
-                Comparator.comparingInt(NafnOgStig::getStig).reversed());
+    public ObservableList<NafnOgStig> getOllNofnOgStig(int difficulty) {
+        endurnyjaLista(); // Make sure the list is up-to-date
 
-        return FXCollections.observableArrayList(sortedStigaListi);
+        // Filter the list by the provided difficulty level
+        FilteredList<NafnOgStig> filteredByDifficulty = new FilteredList<>(stigaListi, stak -> stak.eStig == difficulty);
+
+        // Sort the filtered list by score in descending order
+        SortedList<NafnOgStig> sortedAndFilteredStigaListi = new SortedList<>(filteredByDifficulty, Comparator.comparingInt(NafnOgStig::getStig).reversed());
+
+        return FXCollections.observableArrayList(sortedAndFilteredStigaListi);
     }
 }
 
