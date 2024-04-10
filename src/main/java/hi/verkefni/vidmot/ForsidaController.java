@@ -43,15 +43,16 @@ public class ForsidaController {
 
     public void initialize(){
         forsiduStigaListi = new StigaListi();
-        fxHighScoreForsida.setItems(forsiduStigaListi.getOllNofnOgStig());
         fxCurrentGrafari.textProperty().bind(Leikur.grafaraValProperty().asString());
         Leikur.setDifficulty(1);
+        fxHighScoreForsida.setItems(forsiduStigaListi.getOllNofnOgStig(1));
         toggleGroup1.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null){
                 RadioButton selectedMenuItem = (RadioButton) newValue;
                 int difficulty = Integer.parseInt(selectedMenuItem.getId());
                 fxEStig.setText(eStig[difficulty-1]);
                 Leikur.setDifficulty(difficulty);
+                fxHighScoreForsida.setItems(forsiduStigaListi.getOllNofnOgStig(difficulty));;
             }
         });
         frumstillaLog();
