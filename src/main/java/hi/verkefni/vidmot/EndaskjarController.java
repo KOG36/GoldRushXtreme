@@ -60,18 +60,23 @@ public class EndaskjarController {
 
 
     public void fxOnVistaStig(ActionEvent event) {
-        vistadNafn = nafnLeikmanns.getText();
-        vistadStig = fxLokaStig.getText();
-        int stig = Integer.parseInt(fxLokaStig.getText());
-        int eStig = Leikur.getDifficulty();
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt", true))) {
-            writer.write(vistadNafn + "," + vistadStig + "," + eStig);
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!nafnLeikmanns.getText().isEmpty()) {
+            vistadNafn = nafnLeikmanns.getText();
+            vistadStig = fxLokaStig.getText();
+            int stig = Integer.parseInt(fxLokaStig.getText());
+            int eStig = Leikur.getDifficulty();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt", true))) {
+                writer.write(vistadNafn + "," + vistadStig + "," + eStig);
+                writer.newLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fxHighScoreListi.setItems(stigaListi.getOllNofnOgStig(Leikur.getDifficulty()));
+            fxVistaTakki.setDisable(true);
         }
-        fxHighScoreListi.setItems(stigaListi.getOllNofnOgStig(Leikur.getDifficulty()));
-        fxVistaTakki.setDisable(true);
+        else {
+            nafnLeikmanns.setPromptText("Það þarf að skrifa nafn");
+        }
 
     }
 

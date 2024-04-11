@@ -1,7 +1,37 @@
+.root {
+    -fx-litur1: #f3e9dc;
+    -fx-litur2: #c08552;
+    -fx-litur3: #5e3023;
+    -fx-litur4: #895737;
+    -fx-litur5: #001524;
+    -fx-litur6: #F2BC46;
+
+    -fx-background-color: -fx-litur1;
+}
+
+
+
 #fxLeikbord {
     -fx-background-image: url('images/bakgrunnur.png');
     -fx-background-size: cover;
 }
+
+.button{
+    -fx-background-color: -fx-litur2;
+    /*-fx-effect: dropshadow(three-pass-box, -fx-litur3, 30, 0, 0, 0);
+*/
+    -fx-border-color: -fx-litur3;
+}
+.button:pressed{
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: -fx-litur4;
+}
+
+#tonlist {
+    -fx-effect: dropshadow(three-pass-box, -fx-litur6, 30, 0, 0, 0);
+}
+
 /*
 - Tailwind
 
