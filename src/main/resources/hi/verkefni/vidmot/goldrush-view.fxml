@@ -38,7 +38,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="800" prefWidth="800" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.GoldController" stylesheets="@CSS/goldrush.css">
+<VBox prefHeight="800" prefWidth="800" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hi.verkefni.vidmot.GoldController" stylesheets="@CSS/style.css">
   <fx:include fx:id="menuStyring" source="menu-view.fxml" />
     <HBox alignment="CENTER">
         <Leikbord fx:id="fxLeikbord" />
