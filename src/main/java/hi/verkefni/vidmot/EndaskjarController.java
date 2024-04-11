@@ -75,7 +75,5 @@ public class EndaskjarController {
 
     }
 
-    public void fxSmelltATexField(MouseEvent mouseEvent) {
-        nafnLeikmanns.setText("");
-    }
+
 }
