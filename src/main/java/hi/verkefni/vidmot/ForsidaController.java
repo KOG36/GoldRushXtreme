@@ -2,10 +2,8 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Leikur;
 import hi.verkefni.vinnsla.StigaListi;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,6 +11,7 @@ import javafx.scene.image.ImageView;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static hi.verkefni.vinnsla.Leikur.getGrafaraURL;
 
@@ -38,7 +37,7 @@ public class ForsidaController {
     private ComboBox<String> tonlist;
     @FXML
     private ToggleGroup toggleGroup1;
-    private String[] eStig = {"Létt","Miðlungs", "Erfitt"};
+    private final String[] eStig = {"Létt","Miðlungs", "Erfitt"};
     public StigaListi forsiduStigaListi;
 
     public void initialize(){
@@ -63,36 +62,47 @@ public class ForsidaController {
             if (newValue != null) {
                 int selectedIndex = tonlist.getSelectionModel().getSelectedIndex();
                 Leikur.setValidLag(selectedIndex);
-                // Here, you can use the selectedIndex for further actions, e.g., playing the song
             }
         }
         );
 
     }
+
+    /**
+     * Fallið uppfærir hvaða lög eru sýnileg í viðmótinu.
+     */
     public void frumstillaLog(){
         ObservableList<String> lagaNofn = FXCollections.observableArrayList(lagaListi);
         tonlist.setItems(lagaNofn);
     }
 
+    /**
+     * Fallið uppfærir sýnilega mynd af völdum grafara út frá fylki af myndum.
+     */
     private void updateImage() {
-        int index = Leikur.grafaraValProperty().get() - 1; // Convert number to array index
-        Image image = new Image(getClass().getResourceAsStream(getGrafaraURL(index))); // Load image from path
+        int index = Leikur.grafaraValProperty().get() - 1;
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(getGrafaraURL(index))));
         fxGrafaraMynd.setImage(image);
     }
 
     /**
      * Event handler fyrir takkann á forsíðunni. Skiptir um senu og hefur leik.
-     * @param event
      * @throws IOException
      */
-    public void fxOnByrjaTakki(ActionEvent event) throws IOException {
+    public void fxOnByrjaTakki() throws IOException {
          ViewSwitcher.switchTo(View.LEIKUR);
     }
 
+    /**
+     * Keyrir fallið "valUpp()" í Leikur klasanum.
+     */
     public void fxOnHaegriOrTakki(){
         Leikur.valUpp();
 
     }
+    /**
+     * Keyrir fallið "valNidur()" í Leikur klasanum.
+     */
     public void fxOnVinstriOrTakki(){
         Leikur.valNidur();
     }

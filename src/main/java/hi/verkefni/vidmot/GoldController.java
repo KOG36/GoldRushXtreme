@@ -176,6 +176,8 @@ public class GoldController implements Initializable {
 
     /**
      * Fall sem sér um að hefja nýjan leik.
+     * Athugar hvort það sé verið að búa til gull og hættir því ef svo er.
+     * Byrjar að búa til gull á 1.5 sekúnda fresti
      */
     public void hefjaLeik(){
         if (gull != null){
@@ -188,10 +190,14 @@ public class GoldController implements Initializable {
         gull.play();
     }
 
+    /**
+     * Fallið athugar hvaða lag var valið á forsíðu og spilar það.
+     * Ef ekkert lag var valið er ekkert spilað og ef tónlist var núþegar í gangi þá hættir spilunin fyrst
+     * áður en ný spilun er hafin.
+     */
     public void hefjaTonlist(){
         String validLag = Leikur.getValidLag();
         if (validLag == null || validLag.isEmpty() || validLag.equals("None")) {
-            // If a MediaPlayer is currently playing, stop and dispose it.
             if (mediaPlayer != null) {
                 if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                     mediaPlayer.stop();
@@ -199,10 +205,8 @@ public class GoldController implements Initializable {
                 mediaPlayer.dispose();
                 mediaPlayer = null;
             }
-            return; // Exit the method since there's no song to play.
+            return;
         }
-
-        // Proceed to load and play the selected song.
         URL resource = getClass().getResource(validLag);
         if (resource != null) {
             try {
@@ -213,6 +217,7 @@ public class GoldController implements Initializable {
                 String lag = resource.toExternalForm();
                 Media sound = new Media(lag);
                 mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.setVolume(0.30);
                 mediaPlayer.play();
             } catch (Exception e) {
                 System.out.println("Error initializing media player: " + e.getMessage());
@@ -220,14 +225,6 @@ public class GoldController implements Initializable {
         } else {
             System.out.println("Resource not found: " + validLag);
         }
-    }
-
-    /**
-     * Fall sem tengjir saman EndaskjarController við GoldController.
-     * @param endaskjarController
-     */
-    public void setEndaskjarController(EndaskjarController endaskjarController) {
-        this.endaskjarController = endaskjarController;
     }
 
     /**
@@ -241,14 +238,11 @@ public class GoldController implements Initializable {
 
         setDifficulty(Leikur.getDifficulty());
 
-
         fxStig.textProperty().bind(fxLeikbord.getLeikur().stigProperty().asString());
         orvatakkar();
         stillaKlukku();
         hefjaLeik();
         hefjaTonlist();
-
-
 
         fxLeikbord.setFocusTraversable(true);
         Platform.runLater(() -> fxLeikbord.requestFocus());
