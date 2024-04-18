@@ -60,12 +60,13 @@ public class Leikur {
         Leikur.grafaraVal.set(grafaraVal);
     }
 
-    public static String getGrafaraURL(int val){
+    public static String getGrafaraURL(int val) {
         return grafarar[val];
     }
 
     /**
      * Get-er fyrir Stig.
+     *
      * @return int - Skilar stig sem int.
      */
     public int getStig() {
@@ -74,6 +75,7 @@ public class Leikur {
 
     /**
      * Fall sem skilar stig sem IntegerProperty.
+     *
      * @return IntegerProperty - Skilar stig sem IntegerProperty.
      */
     public IntegerProperty stigProperty() {
@@ -82,26 +84,31 @@ public class Leikur {
 
     /**
      * Set-er fyrir stig.
+     *
      * @param stig
      */
     public void setStig(int stig) {
         this.stig.set(stig);
     }
 
-    public static void valUpp(){
+    /**
+     * Velur næsta grafara í fylkinu og ef komið er á enda stak fylkis þá fer það hring.
+     */
+    public static void valUpp() {
         if (getGrafaraVal() < grafarar.length) { // Ensure index stays within the array bounds
             setGrafaraVal(getGrafaraVal() + 1);
-        }
-        else {
+        } else {
             setGrafaraVal(1);
         }
     }
 
-    public static void valNidur(){
+    /**
+     * Velur fyrri grafara í fylkinu og ef komið er á byrjunar stak fylkisinns fer það hring.
+     */
+    public static void valNidur() {
         if (getGrafaraVal() > 1) { // Ensure index stays within the array bounds
             setGrafaraVal(getGrafaraVal() - 1);
-        }
-        else {
+        } else {
             setGrafaraVal(grafarar.length);
         }
     }

@@ -15,6 +15,7 @@ public class Klukka {
 
     /**
      * Smiður fyrir Klukka.
+     *
      * @param timi
      */
     public Klukka(int timi) {
@@ -23,6 +24,7 @@ public class Klukka {
 
     /**
      * Get-er fyrir timi.
+     *
      * @return int - Skilar timi sem int.
      */
     public int getTimi() {
@@ -31,6 +33,7 @@ public class Klukka {
 
     /**
      * Fall sem skilar timi sem SimpleIntegerProperty.
+     *
      * @return SimpleInegerProperty - Skilar timi sem SimpleIntegerProperty.
      */
     public SimpleIntegerProperty timiProperty() {
@@ -39,6 +42,7 @@ public class Klukka {
 
     /**
      * Set-er fyrir timi.
+     *
      * @param timi
      */
     public void setTimi(int timi) {
@@ -46,9 +50,9 @@ public class Klukka {
     }
 
     /**
-     *Fall sem minnkar tima klukku um einn.
+     * Fall sem minnkar tima klukku um einn.
      */
-    public void tic(){
+    public void tic() {
         int tempTimi = getTimi();
         setTimi(--tempTimi);
     }

@@ -1,11 +1,13 @@
 package hi.verkefni.vidmot;
 
-/**
- * Nafn: Róber A. Jack
- * Tölvupóstur: ral9@hi.is
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
  *
- * Enum klasi fyri view.
- */
+ * Lýsing : Enum klasi fyrir View.
+ *
+ *
+ *****************************************************************************/
 public enum View {
     FORSIDA("forsida-view.fxml"),
     LEIKUR("goldrush-view.fxml"),
