@@ -31,7 +31,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="238.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#fxOnSpilaAfturTakki" prefHeight="75.0" prefWidth="275.0" text="Spila Aftur">
+                  <Button fx:id="fxSpilaAftur" mnemonicParsing="false" onAction="#fxOnSpilaAfturTakki" prefHeight="75.0" prefWidth="275.0" text="Spila Aftur">
                      <font>
                         <Font size="24.0" />
                      </font>

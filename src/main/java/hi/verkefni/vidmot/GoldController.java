@@ -213,6 +213,7 @@ public class GoldController implements Initializable {
                 String lag = resource.toExternalForm();
                 Media sound = new Media(lag);
                 mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.setVolume(0.30);
                 mediaPlayer.play();
             } catch (Exception e) {
                 System.out.println("Error initializing media player: " + e.getMessage());
