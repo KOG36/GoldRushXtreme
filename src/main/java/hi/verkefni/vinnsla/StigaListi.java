@@ -9,14 +9,29 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
-
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ *
+ * Lýsing : Vinnslu klasi sem skilgreinir Stigalisti.
+ *
+ *
+ *****************************************************************************/
 public class StigaListi {
     public ObservableList<NafnOgStig> stigaListi;
 
+    /**
+     * Smiður fyrir StigaListi.
+     */
     public StigaListi(){
         this.stigaListi = FXCollections.observableArrayList();
         fillaLista("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt");
     }
+
+    /**
+     * Fillir lista.
+     * @param textaSkra
+     */
     public void fillaLista(String textaSkra) {
         try (BufferedReader br = new BufferedReader(new FileReader(textaSkra))) {
             String lina;
@@ -37,21 +52,25 @@ public class StigaListi {
         }
     }
 
+    /**
+     * Enfurnýjar listann.
+     */
     public void endurnyjaLista() {
-        // Clear the current list
         stigaListi.clear();
 
-        // Repopulate the list from the file
         fillaLista("src/main/resources/hi/verkefni/vidmot/CSS/stigalisti.txt");
     }
 
+    /**
+     * Get-er fyrir NofnOgStig listan.
+     * @param difficulty
+     * @return
+     */
     public ObservableList<NafnOgStig> getOllNofnOgStig(int difficulty) {
-        endurnyjaLista(); // Make sure the list is up-to-date
+        endurnyjaLista();
 
-        // Filter the list by the provided difficulty level
         FilteredList<NafnOgStig> filteredByDifficulty = new FilteredList<>(stigaListi, stak -> stak.eStig == difficulty);
 
-        // Sort the filtered list by score in descending order
         SortedList<NafnOgStig> sortedAndFilteredStigaListi = new SortedList<>(filteredByDifficulty, Comparator.comparingInt(NafnOgStig::getStig).reversed());
 
         return FXCollections.observableArrayList(sortedAndFilteredStigaListi);

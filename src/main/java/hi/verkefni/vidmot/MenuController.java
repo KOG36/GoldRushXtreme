@@ -14,11 +14,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /******************************************************************************
- * Nafn : Kjartan Ólafur Gunnarsson
- * T-póstur: kog36@hi.is
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
  *
- * Lýsing : Controller fyrir menu.
- *
+ * Lýsing : Conntroller fyrir menu
  *
  *****************************************************************************/
 public class MenuController implements Initializable {

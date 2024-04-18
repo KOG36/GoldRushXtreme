@@ -1,1 +1,6 @@
-Kjartan,10
+Salomea,5,1
+Róbert,17,1
+Saraia,4,1
+Salomea,8,1
+samúel,14,1
+jón,4,3

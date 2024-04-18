@@ -9,12 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * Nafn: Róbert A. Jack
- * Tölvupóstur: ral9@hi.is
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
  *
- * Klasi sem sér um að skipta um senu.
- */
+ * Lýsing : Klasi sem sér um að skipta um senu.
+ *
+ *
+ *****************************************************************************/
 public class ViewSwitcher {
     private static Map<View, Parent> cache = new HashMap<>();
     private static Scene scene;
