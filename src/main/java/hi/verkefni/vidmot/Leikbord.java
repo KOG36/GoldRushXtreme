@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Random;
 
 import static hi.verkefni.vinnsla.Leikur.getGrafaraURL;
@@ -29,7 +30,6 @@ public class Leikbord extends Pane {
     @FXML
     private Grafari fxGrafari;
     private ObservableList<Gull> gullListi = FXCollections.observableArrayList();
-    private boolean iGangi = true;
 
     /**
      * Smiður fyrir Leikbord.
@@ -40,27 +40,10 @@ public class Leikbord extends Pane {
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
-            postLoadInitialization(); // Call after FXML is loaded
+            postLoadInitialization();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Get-er fyrir iGangi.
-     * @return boolean - Skilar hvort iGangi sé true eða false.
-     */
-    public boolean isiGangi() {
-        return iGangi;
-    }
-
-    /**
-     * Set-er fyrir iGangi.
-     * @param iGangi
-     */
-    public void setiGangi(boolean iGangi) {
-        this.iGangi = iGangi;
-        this.setDisable(!iGangi);
     }
 
     /**
@@ -75,8 +58,6 @@ public class Leikbord extends Pane {
      * Initialize fall fyrir Leikbord.
      */
     private void postLoadInitialization() {
-        // This method is called immediately after the FXML is loaded
-        // Suitable for any initialization that requires the FXML components to be loaded first
         if (fxGrafari != null) {
             int index = Leikur.grafaraValProperty().get() - 1;
             Image image = new Image(getClass().getResourceAsStream(getGrafaraURL(index)));
@@ -101,7 +82,7 @@ public class Leikbord extends Pane {
             double centerX = this.getWidth() / 2 - fxGrafari.getBoundsInLocal().getWidth() / 2;
             double centerY = this.getHeight() / 2 - fxGrafari.getBoundsInLocal().getHeight() / 2;
 
-            // Adjust translate properties instead of layout properties if you're using translations to move Grafari
+
             fxGrafari.setTranslateX(centerX);
             fxGrafari.setTranslateY(centerY);
 
@@ -109,11 +90,11 @@ public class Leikbord extends Pane {
     }
 
     /**
-     * Fall sem byrtir gull á leikborði.
+     * Fall sem birtir gull á leikborði.
      */
     public void meiraGull() {
         Gull gull = new Gull();
-        Image image = new Image(getClass().getResourceAsStream("/hi/verkefni/vidmot/CSS/images/Penge.png"));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/hi/verkefni/vidmot/CSS/images/Penge.png")));
         gull.setFill(new ImagePattern(image));
 
         Random rand = new Random();
@@ -153,13 +134,5 @@ public class Leikbord extends Pane {
      */
     public Leikur getLeikur() {
         return leikur;
-    }
-
-    /**
-     * Set-er fyrir Leikur.
-     * @param leikur
-     */
-    public void setLeikur(Leikur leikur) {
-        this.leikur = leikur;
     }
 }

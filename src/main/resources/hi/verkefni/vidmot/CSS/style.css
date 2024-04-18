@@ -9,8 +9,6 @@
     -fx-background-color: -fx-litur1;
 }
 
-
-
 #fxLeikbord {
     -fx-background-image: url('images/bakgrunnur.png');
     -fx-background-size: cover;
@@ -18,8 +16,6 @@
 
 .button{
     -fx-background-color: -fx-litur2;
-    /*-fx-effect: dropshadow(three-pass-box, -fx-litur3, 30, 0, 0, 0);
-*/
     -fx-border-color: -fx-litur3;
 }
 .button:pressed{
@@ -31,40 +27,3 @@
 #tonlist {
     -fx-effect: dropshadow(three-pass-box, -fx-litur6, 30, 0, 0, 0);
 }
-
-/*
-- Tailwind
-
-{ 'linen': { DEFAULT: '#f3e9dc', 100: '#453118', 200: '#8a632f', 300: '#c49353', 400: '#dcbe98', 500: '#f3e9dc', 600: '#f6eee4', 700: '#f8f2ea', 800: '#faf6f1', 900: '#fdfbf8' }, 'caramel': { DEFAULT: '#c08552', 100: '#281b0f', 200: '#51351d', 300: '#79502c', 400: '#a26b3a', 500: '#c08552', 600: '#cd9e75', 700: '#dab698', 800: '#e6cfba', 900: '#f3e7dd' }, 'caput_mortuum': { DEFAULT: '#5e3023', 100: '#130907', 200: '#25130e', 300: '#381c15', 400: '#4a261c', 500: '#5e3023', 600: '#954b37', 700: '#c16e57', 800: '#d69f8f', 900: '#eacfc7' }, 'raw_umber': { DEFAULT: '#895737', 100: '#1c110b', 200: '#372316', 300: '#533421', 400: '#6f462c', 500: '#895737', 600: '#b7744a', 700: '#c99777', 800: '#dbb9a5', 900: '#eddcd2' }, 'rich_black': { DEFAULT: '#001524', 100: '#000407', 200: '#00080e', 300: '#000c15', 400: '#00111d', 500: '#001524', 600: '#004c83', 700: '#0083e1', 800: '#41b0ff', 900: '#a0d7ff' }, 'xanthous': { DEFAULT: '#F2BC46', 100: '#3a2904', 200: '#745208', 300: '#af7b0c', 400: '#e9a410', 500: '#f2bc46', 600: '#f5c96a', 700: '#f7d68f', 800: '#fae4b5', 900: '#fcf1da' } }
-
-- CSV
-
-f3e9dc,c08552,5e3023,895737,001524,F2BC46
-
-- With #
-
-#f3e9dc, #c08552, #5e3023, #895737, #001524, #F2BC46
-
-- Array
-
-["f3e9dc","c08552","5e3023","895737","001524","F2BC46"]
-
-- Object
-
-{"Linen":"f3e9dc","Caramel":"c08552","Caput mortuum":"5e3023","Raw umber":"895737","Rich black":"001524","Xanthous":"F2BC46"}
-
-- Extended Array
-
-[{"name":"Linen","hex":"f3e9dc","rgb":[243,233,220],"cmyk":[0,4,9,5],"hsb":[34,9,95],"hsl":[34,49,91],"lab":[93,1,8]},{"name":"Caramel","hex":"c08552","rgb":[192,133,82],"cmyk":[0,31,57,25],"hsb":[28,57,75],"hsl":[28,47,54],"lab":[60,17,36]},{"name":"Caput mortuum","hex":"5e3023","rgb":[94,48,35],"cmyk":[0,49,63,63],"hsb":[13,63,37],"hsl":[13,46,25],"lab":[26,19,18]},{"name":"Raw umber","hex":"895737","rgb":[137,87,55],"cmyk":[0,36,60,46],"hsb":[23,60,54],"hsl":[23,43,38],"lab":[42,17,27]},{"name":"Rich black","hex":"001524","rgb":[0,21,36],"cmyk":[100,42,0,86],"hsb":[205,100,14],"hsl":[205,100,7],"lab":[6,-2,-13]},{"name":"Xanthous","hex":"F2BC46","rgb":[242,188,70],"cmyk":[0,22,71,5],"hsb":[41,71,95],"hsl":[41,87,61],"lab":[79,8,64]}]
-
-- XML
-
-<palette>
-  <color name="Linen" hex="f3e9dc" r="243" g="233" b="220" />
-  <color name="Caramel" hex="c08552" r="192" g="133" b="82" />
-  <color name="Caput mortuum" hex="5e3023" r="94" g="48" b="35" />
-  <color name="Raw umber" hex="895737" r="137" g="87" b="55" />
-  <color name="Rich black" hex="001524" r="0" g="21" b="36" />
-  <color name="Xanthous" hex="F2BC46" r="242" g="188" b="70" />
-</palette>
- */

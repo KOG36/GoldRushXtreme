@@ -15,15 +15,13 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- * Nöfn: Róbert A. Jack,
- *       Kjartan Ólafur Gunnarsson
- * Tölvupóstur: ral9@hi.is,
- *              kog36@hi.is
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ * <p>
+ * Lýsing : Controller fyrir endasíðu.
  *
- * Controller fyrir endasíðunna.
- *
- */
+ *****************************************************************************/
 public class EndaskjarController {
 
     public Button fxVistaTakki;

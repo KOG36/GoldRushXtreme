@@ -15,16 +15,14 @@ import java.util.Objects;
 
 import static hi.verkefni.vinnsla.Leikur.getGrafaraURL;
 
-/**
- * Nafn: Róbert A. Jack
- * Tölvupóstur: ral9@hi.is
+/******************************************************************************
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ * <p>
+ * Lýsing : Controller fyrir Forsíðu.
  *
- * Contrloller fyrir forsíðuna.
- *
- */
+ *****************************************************************************/
 public class ForsidaController {
-
-
     private static final String[] lagaListi= {"Backup Plan", "Catastrophic Success", "Cyborg Ninja",  "Floating Cat", "Game BOI 1", "Game BOI 2"};
     public Label fxEStig;
     public Button fxVinstri;

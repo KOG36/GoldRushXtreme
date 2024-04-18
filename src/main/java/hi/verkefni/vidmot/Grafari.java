@@ -19,19 +19,15 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 
 /******************************************************************************
- * Nafn : Kjartan Ólafur Gunnarsson
- * T-póstur: kog36@hi.is
- *
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ * <p>
  * Lýsing : Klasi sem skilgreinir Grafara.
  *
  *
  *****************************************************************************/
 public class Grafari extends Rectangle {
     private int stefna;
-    private final double speed = 15.0;
-
-    private final double originalX = 0;
-    private final double originalY = 0;
 
     /**
      * Smiður fyrir Grafari.
@@ -53,6 +49,7 @@ public class Grafari extends Rectangle {
     public void afram() {
 
         double radians = Math.toRadians(stefna);
+        double speed = 15.0;
         double deltaX = speed * Math.cos(radians);
         double deltaY = speed * Math.sin(radians);
         double minX = 0;
@@ -76,14 +73,6 @@ public class Grafari extends Rectangle {
         this.stefna = stefna;
     }
 
-    /**
-     * Ekki notað muna að fjarlæga.
-     */
-    public void resetPosition() {
-
-        this.setTranslateX(originalX);
-        this.setTranslateY(originalY);
-    }
 
     /**
      * Fall sem sér um að fjarlæga gull og bæta við stigi þegar grafari snertir gull.

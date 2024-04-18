@@ -15,7 +15,6 @@ import javafx.util.Duration;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -25,8 +24,8 @@ import java.util.Set;
 /******************************************************************************
  * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
  * T-póstur: kog36@hi.is og ral9@hi.is
- *
- * Lýsing : Conntroller fyrir Gold Rush. Forrititð er leikur þar sem gullgrafari safnar gulli á leikborði.
+ * <p>
+ * Lýsing : Controller fyrir Gold Rush. Forritið er leikur þar sem gullgrafari safnar gulli á leikborði.
  * Leikmaður fær stig fyrir hvert gull sem hann safnar.
  *
  *
@@ -42,7 +41,6 @@ public class GoldController implements Initializable {
     private Klukka klukka;
     private Timeline timer;
     private Timeline gull;
-    private EndaskjarController endaskjarController;
     @FXML
     public MenuController menuStyringController;
     private MediaPlayer mediaPlayer;
@@ -91,8 +89,7 @@ public class GoldController implements Initializable {
      */
     private void breytaUmAtt(Set<KeyCode> yttirTakkar) {
         int nyStefna= 0;
-        if(yttirTakkar.isEmpty());
-        else {
+        if(!yttirTakkar.isEmpty()) {
             if (yttirTakkar.contains(KeyCode.UP) && yttirTakkar.contains(KeyCode.RIGHT)) {
                 nyStefna = Stefna.NA.getGradur();
             } else if (yttirTakkar.contains(KeyCode.DOWN) && yttirTakkar.contains(KeyCode.RIGHT)) {
@@ -117,11 +114,10 @@ public class GoldController implements Initializable {
     }
 
     /**
-     * Fall sem stopar leikinn og skiptir yfir í endaskjáinn.
+     * Fall sem stoppar leikinn og skiptir yfir í endaskjáinn.
      * @throws IOException
      */
     public void leikLokid() throws IOException {
-        fxLeikbord.setiGangi(false);
         gull.stop();
         HighScore.setHighScore(fxLeikbord.getLeikur().getStig());
         if(mediaPlayer!=null){
@@ -141,10 +137,8 @@ public class GoldController implements Initializable {
 
         klukka = new Klukka(lengd[difficulty - 1]);
 
-        // Bind the label to the Klukka's time property as before
         fxTimi.textProperty().bind(klukka.timiProperty().asString());
 
-        // Create a new timeline
         timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> klukka.tic()));
         timer.setCycleCount(Timeline.INDEFINITE);
         klukka.timiProperty().addListener((obs, oldVal, newVal) -> {
@@ -158,8 +152,6 @@ public class GoldController implements Initializable {
 
             }
         });
-
-        // Start the new timeline
         timer.play();
     }
 
