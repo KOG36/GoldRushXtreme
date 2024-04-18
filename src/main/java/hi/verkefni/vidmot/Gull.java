@@ -6,9 +6,9 @@ import javafx.scene.shape.Circle;
 import java.io.IOException;
 
 /******************************************************************************
- * Nafn : Kjartan Ólafur Gunnarsson
- * T-póstur: kog36@hi.is
- *
+ * Nafn : Kjartan Ólafur Gunnarsson og Róbert A. Jack
+ * T-póstur: kog36@hi.is og ral9@hi.is
+ * <p>
  * Lýsing : Klasi sem skilgreinir Gull.
  *
  *

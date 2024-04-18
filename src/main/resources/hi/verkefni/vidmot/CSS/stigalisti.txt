@@ -1,6 +1,9 @@
-Salomea,5,1
-Róbert,17,1
-Saraia,4,1
-Salomea,8,1
-samúel,14,1
-jón,4,3
+GullGummi,5,3
+GullGummi,10,2
+GullGummi,15,1
+SilfurSveinn,3,3
+SilfurSveinn,6,2
+SilfurSveinn,9,1
+BronsBrjánn,1,3
+BronsBrjánn,2,2
+BronsBrjánn,3,1
