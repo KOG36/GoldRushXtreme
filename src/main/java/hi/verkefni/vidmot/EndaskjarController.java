@@ -4,24 +4,24 @@ import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Leikur;
 import hi.verkefni.vinnsla.StigaListi;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Nafn: Róbert A. Jack
- * Tölvupóstur: ral9@hi.is
+ * Nöfn: Róbert A. Jack,
+ *       Kjartan Ólafur Gunnarsson
+ * Tölvupóstur: ral9@hi.is,
+ *              kog36@hi.is
  *
- * Contrloller fyrir endasíðunna.
+ * Controller fyrir endasíðunna.
  *
  */
 public class EndaskjarController {
@@ -50,14 +50,14 @@ public class EndaskjarController {
 
         nafnLeikmanns.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
-                case UP, DOWN, LEFT, RIGHT -> event.consume(); // This stops the event from propagating further
+                case UP, DOWN, LEFT, RIGHT -> event.consume();
                 default -> {
                 }
             }
         });
         fxHighScoreListi.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode()) {
-                case UP, DOWN, LEFT, RIGHT -> event.consume(); // This stops the event from propagating further
+                case UP, DOWN, LEFT, RIGHT -> event.consume();
                 default -> {
                 }
             }
@@ -67,20 +67,37 @@ public class EndaskjarController {
         Platform.runLater(() -> fxSpilaAftur.requestFocus());
     }
 
-    public void fxOnSpilaAfturTakki(ActionEvent event) throws IOException {
+    /**
+     * Fall sem gerir manni kleyft að spila aftur með því að færa mann aftur yfir á leikborðið
+     * @throws IOException
+     */
+    public void fxOnSpilaAfturTakki() throws IOException {
         ViewSwitcher.switchTo(View.LEIKUR);
     }
 
-    public void fxOnForsidaTakki(ActionEvent event) throws IOException {
+    /**
+     * Fall sem færir mann aftur á forsíðu.
+     * @throws IOException
+     */
+    public void fxOnForsidaTakki() throws IOException {
         ViewSwitcher.switchTo(View.FORSIDA);
     }
 
-    public void fxOnHaettaTakki(ActionEvent event) {
+    /**
+     * Fall sem lokar forriti
+     */
+    public void fxOnHaettaTakki() {
         System.exit(0);
     }
 
-
-    public void fxOnVistaStig(ActionEvent event) {
+    /**
+     * Fallið tekur Nafn leikmanns úr viðeigandi textField, stig leikmannsins og erfiðleikastigið og vistar á .txt skrá
+     * sem heldur utan um stig.
+     * Síðan kallar fallið á fall sem uppfærir sýnilegan highScore lista til að viðmótið innihaldi rétt stig.
+     *
+     * Ef ekkert nafn er skrifað í reitinn er látið leikmann vita að það þurfi að skrifa nafn.
+     */
+    public void fxOnVistaStig() {
         if(!nafnLeikmanns.getText().isEmpty()) {
             vistadNafn = nafnLeikmanns.getText();
             vistadStig = fxLokaStig.getText();
