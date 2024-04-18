@@ -3,12 +3,14 @@ package hi.verkefni.vidmot;
 import hi.verkefni.vinnsla.HighScore;
 import hi.verkefni.vinnsla.Leikur;
 import hi.verkefni.vinnsla.StigaListi;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedWriter;
@@ -26,6 +28,7 @@ public class EndaskjarController {
 
     public Button fxVistaTakki;
     public Label fxEStig;
+    public Button fxSpilaAftur;
     @FXML
     private ListView fxHighScoreListi;
     @FXML
@@ -44,6 +47,24 @@ public class EndaskjarController {
         fxEStig.setText(eStig[Leikur.getDifficulty()-1]);
         stigaListi = new StigaListi();
         fxHighScoreListi.setItems(stigaListi.getOllNofnOgStig(Leikur.getDifficulty()));
+
+        nafnLeikmanns.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            switch (event.getCode()) {
+                case UP, DOWN, LEFT, RIGHT -> event.consume(); // This stops the event from propagating further
+                default -> {
+                }
+            }
+        });
+        fxHighScoreListi.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            switch (event.getCode()) {
+                case UP, DOWN, LEFT, RIGHT -> event.consume(); // This stops the event from propagating further
+                default -> {
+                }
+            }
+        });
+
+        fxSpilaAftur.setFocusTraversable(true);
+        Platform.runLater(() -> fxSpilaAftur.requestFocus());
     }
 
     public void fxOnSpilaAfturTakki(ActionEvent event) throws IOException {
